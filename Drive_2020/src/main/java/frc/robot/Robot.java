@@ -7,20 +7,28 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+import com.revrobotics.ColorSensorV3;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ * the package after crea
+ * ting this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
+  
+  Command m_autonomousCommand;
+  RobotContainer m_robotContainer;
 
-  private RobotContainer m_robotContainer;
+  I2C.Port i2cPort = I2C.Port.kOnboard;
+  ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+  
 
   /**
    * This function is run when the robot is first started up and should be used for any
