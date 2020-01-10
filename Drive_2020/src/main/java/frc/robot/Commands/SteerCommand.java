@@ -31,6 +31,11 @@ public class SteerCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+  }
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
 
     double yaxis = RobotContainer.getY(RobotContainer.joy1, Constants.yDeadband); //Adjusted Y
     double zaxis = RobotContainer.getZ(RobotContainer.joy1, Constants.zDeadband); // Adjusted Z
@@ -39,12 +44,7 @@ public class SteerCommand extends CommandBase {
     SmartDashboard.putNumber("Z-AXIS", zaxis);
 
     driveSubsystem.Drive_Steer(yaxis, zaxis);
-    
-  }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
   }
 
   // Called once the command ends or is interrupted.

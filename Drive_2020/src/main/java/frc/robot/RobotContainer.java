@@ -51,7 +51,7 @@ public class RobotContainer {
     JoystickButton commandBrakeButton = new JoystickButton(joy1, Constants.brakeButtonNumber);
     JoystickButton commandSteerButton = new JoystickButton(joy1, Constants.steerButtonNumber);
     
-    commandBrakeButton.whileHeld(new BrakeCommand(driveSubsystem));
+    commandBrakeButton.whileActiveContinuous(new BrakeCommand(driveSubsystem));
     commandSteerButton.whenPressed(new SteerCommand(driveSubsystem));
 
   }
