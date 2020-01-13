@@ -7,12 +7,14 @@
 
 package frc.robot;
 
+import com.revrobotics.ColorSensorV3;
+
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-
-import com.revrobotics.ColorSensorV3;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -23,13 +25,14 @@ import com.revrobotics.ColorSensorV3;
  */
 public class Robot extends TimedRobot {
   
-  Command m_autonomousCommand;
-  RobotContainer m_robotContainer;
-
-  I2C.Port i2cPort = I2C.Port.kOnboard;
-  ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+  Command autonomousCommand;
+  RobotContainer robotContainer;
   
 
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -38,7 +41,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    robotContainer = new RobotContainer();
+    
   }
 
   /**
@@ -55,6 +59,16 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
+
+    Color detectedColor = m_colorSensor.getColor();
+    double IR = m_colorSensor.getIR();
+    
+    SmartDashboard.putNumber("Red", detectedColor.red * 255);
+    SmartDashboard.putNumber("Green", detectedColor.green * 255);
+    SmartDashboard.putNumber("Blue", detectedColor.blue * 255);
+    SmartDashboard.putNumber("IR", IR);
+
   }
 
   /**
@@ -73,11 +87,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    autonomousCommand = robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
+    if (autonomousCommand != null) {
+      autonomousCommand.schedule();
     }
   }
 
@@ -94,8 +108,8 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+    if (autonomousCommand != null) {
+      autonomousCommand.cancel();
     }
   }
 

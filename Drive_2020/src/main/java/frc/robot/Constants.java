@@ -21,4 +21,24 @@ public final class Constants {
 
     public final static int grabberRotateUpButton = 8;
     public final static int grabberRotateDownButton =7;
+
+    // CAN IDs
+    public final static int FR_port = 3;
+    public final static int FL_port = 2;
+    public final static int BR_port = 4;
+    public final static int BL_port = 1;
+
+    public final static double maxSpeed = 0.4;
+    public final static double swerveCoefficient = 0.6;
+    public final static double yDeadband = 0.1;
+    public final static double zDeadband = 0.1;
+    
+    public final static double zTurnThreshold = 0.1;
+
+
+    //Buttons
+    public final static int steerButtonNumber = 2;
+    public final static int brakeButtonNumber = 7;
+
+
 }

@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Commands.ArmRotateCommand;
 import frc.robot.Commands.DriveCommand;
 import frc.robot.Subsystems.ArmRotateSubsystem;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.BrakeCommand;
+import frc.robot.Commands.SteerCommand;
 import frc.robot.Subsystems.DriveSubsystem;
 
 /**
@@ -28,11 +31,15 @@ public class RobotContainer {
   private final DriveCommand m_driveCommand = new DriveCommand(m_driveSubsystem);
 
   private final ArmRotateSubsystem m_armRotateSubsystem = new ArmRotateSubsystem();
-  private final ArmRotateCommand m_armRotateCommand = new ArmRotateCommand(m_armRotateSubsystem);
-
-  public static Joystick joy1;
-  public static Joystick joy2;
+  private final ArmRotateCommand m_armRotateCommand = new ArmRotateCommand(m_armRotateSubsystem);  
   
+  // Joystick kept public
+  public static Joystick joy1 = new Joystick(1);
+  public static Joystick joy2 = new Joystick(2);
+
+  private final DriveSubsystem driveSubsystem = new DriveSubsystem();
+  private final DriveCommand driveCommand = new DriveCommand(driveSubsystem);
+
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -40,6 +47,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     m_armRotateSubsystem.setDefaultCommand(m_armRotateCommand);
+    driveSubsystem.setDefaultCommand(driveCommand);
+    
   }
 
   /**
@@ -49,6 +58,49 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+   
+    JoystickButton commandBrakeButton = new JoystickButton(joy1, Constants.brakeButtonNumber);
+    JoystickButton commandSteerButton = new JoystickButton(joy1, Constants.steerButtonNumber);
+    
+    commandBrakeButton.whileActiveContinuous(new BrakeCommand(driveSubsystem));
+    commandSteerButton.whenPressed(new SteerCommand(driveSubsystem));
+
+  }
+
+
+  public static double getY(final Joystick joy, final double band) {
+    // Inverted (Joystick moved forwards gives negtive reading)
+    double val = -joy.getY();
+
+    if (Math.abs(val) < band)
+        val = 0;
+    else {
+        val = val - Math.signum(val) * band;
+    }
+    return val;
+  }
+
+  public static double getZ(Joystick joy, double band) {
+    double val = joy.getZ();
+
+    if (Math.abs(val) < band)
+        val = 0;
+    else {
+        val = val - Math.signum(val) * band;
+    }
+    return val;
+  }
+
+  public static double getX(Joystick joy, double band) {
+
+    double val = joy.getX();
+
+    if (Math.abs(val) < band)
+        val = 0;
+    else {
+        val = val - Math.signum(val) * band;
+    }
+    return val;
   }
 
 
