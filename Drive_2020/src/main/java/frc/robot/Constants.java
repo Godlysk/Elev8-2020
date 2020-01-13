@@ -16,4 +16,9 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public final static int grabberShooterOpen = 12;
+    public final static int grabberShooterClose = 11;
+
+    public final static int grabberRotateUpButton = 8;
+    public final static int grabberRotateDownButton =7;
 }

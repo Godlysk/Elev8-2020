@@ -8,8 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.Commands.ArmRotateCommand;
 import frc.robot.Commands.DriveCommand;
+import frc.robot.Subsystems.ArmRotateSubsystem;
 import frc.robot.Subsystems.DriveSubsystem;
 
 /**
@@ -23,14 +27,19 @@ public class RobotContainer {
   private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   private final DriveCommand m_driveCommand = new DriveCommand(m_driveSubsystem);
 
+  private final ArmRotateSubsystem m_armRotateSubsystem = new ArmRotateSubsystem();
+  private final ArmRotateCommand m_armRotateCommand = new ArmRotateCommand(m_armRotateSubsystem);
 
-
+  public static Joystick joy1;
+  public static Joystick joy2;
+  
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    m_armRotateSubsystem.setDefaultCommand(m_armRotateCommand);
   }
 
   /**

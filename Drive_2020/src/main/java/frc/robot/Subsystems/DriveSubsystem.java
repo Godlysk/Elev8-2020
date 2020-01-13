@@ -13,8 +13,12 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Creates a new DriveSubsystem.
    */
+
+  // public Encoder encArmVertical;
+
   public DriveSubsystem() {
 
+    
   }
 
   @Override
