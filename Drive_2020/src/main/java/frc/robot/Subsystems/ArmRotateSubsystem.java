@@ -23,16 +23,16 @@ public class ArmRotateSubsystem extends SubsystemBase {
     ArmVerticalMotor = new WPI_TalonSRX(9);
   }
 
-  public void ArmUpwards() {
-    ArmVerticalMotor.set(0.6);
-  }
+  // public void ArmUpwards() {
+  //   ArmVerticalMotor.set(0.6);
+  // }
 
-  public void ArmDownwards() {
-    ArmVerticalMotor.set(-0.6);
-  }
+  // public void ArmDownwards() {
+  //   ArmVerticalMotor.set(-0.6);
+  // }
 
-  public void ArmStopBreak() {
-    ArmVerticalMotor.set(0);
-  }
+  // public void ArmStopBreak() {
+  //   ArmVerticalMotor.set(0);
+  // }
  
 }

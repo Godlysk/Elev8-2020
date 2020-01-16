@@ -28,18 +28,18 @@ public class ArmRotateCommand extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    boolean ArmUpwards_Button = RobotContainer.joy1.getRawButton(Constants.grabberRotateUpButton);
-    boolean ArmDownwards_Button = RobotContainer.joy1.getRawButton(Constants.grabberRotateDownButton);
+    // boolean ArmUpwards_Button = RobotContainer.joy1.getRawButton(Constants.grabberRotateUpButton);
+    // boolean ArmDownwards_Button = RobotContainer.joy1.getRawButton(Constants.grabberRotateDownButton);
 
-    if(ArmUpwards_Button){
-      m_armRotateSubsystem.ArmUpwards();
-    }
-    else if(ArmDownwards_Button){
-      m_armRotateSubsystem.ArmDownwards();
-    }
-    else{
-      m_armRotateSubsystem.ArmStopBreak();
-    }
+    // if(ArmUpwards_Button){
+    //   m_armRotateSubsystem.ArmUpwards();
+    // }
+    // else if(ArmDownwards_Button){
+    //   m_armRotateSubsystem.ArmDownwards();
+    // }
+    // else{
+    //   m_armRotateSubsystem.ArmStopBreak();
+    // }
   }
 
   // Make this return true when this Command no longer needs to run execute()

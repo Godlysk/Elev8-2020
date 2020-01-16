@@ -46,17 +46,17 @@ public class ArmSolenoidCommand extends CommandBase {
   }
 
   public void toggle(){
-    boolean toggleOpenCloseButton = RobotContainer.joy2.getRawButtonPressed(Constants.grabberRotateDownButton);
-    if(toggleOpenCloseButton){
-      currentState = !currentState;
-    }
-    if(currentState){
-      m_armSolenoidSubsystem.open();
-      //set on
-    }else{
-      m_armSolenoidSubsystem.close();
-      //set off
-    }
+    // boolean toggleOpenCloseButton = RobotContainer.joy2.getRawButtonPressed(Constants.grabberRotateDownButton);
+    // if(toggleOpenCloseButton){
+    //   currentState = !currentState;
+    // }
+    // if(currentState){
+    //   m_armSolenoidSubsystem.open();
+    //   //set on
+    // }else{
+    //   m_armSolenoidSubsystem.close();
+    //   //set off
+    // }
   }
 
   // public void nonToggle(){

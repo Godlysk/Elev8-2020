@@ -10,11 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.Commands.ArmRotateCommand;
 import frc.robot.Commands.DriveCommand;
 import frc.robot.Subsystems.ArmRotateSubsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.ArmRotateCommand;
 import frc.robot.Commands.BrakeCommand;
 import frc.robot.Commands.SteerCommand;
 import frc.robot.Subsystems.DriveSubsystem;
@@ -39,6 +38,7 @@ public class RobotContainer {
 
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
   private final DriveCommand driveCommand = new DriveCommand(driveSubsystem);
+
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

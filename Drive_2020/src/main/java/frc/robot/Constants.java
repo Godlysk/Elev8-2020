@@ -16,11 +16,6 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public final static int grabberShooterOpen = 12;
-    public final static int grabberShooterClose = 11;
-
-    public final static int grabberRotateUpButton = 8;
-    public final static int grabberRotateDownButton =7;
 
     // CAN IDs
     public final static int FR_port = 3;
@@ -32,13 +27,21 @@ public final class Constants {
     public final static double swerveCoefficient = 0.6;
     public final static double yDeadband = 0.1;
     public final static double zDeadband = 0.1;
-    
+
     public final static double zTurnThreshold = 0.1;
 
 
     //Buttons
     public final static int steerButtonNumber = 2;
     public final static int brakeButtonNumber = 7;
+
+    //PID Constants
+    public final static int kP_DriveStraight = 0;
+    public final static int kI_DriveStraight = 0;
+    public final static int kD_DriveStraight = 0;
+
+    // public final static int grabberRotateDownButton = 12;
+    // public final static int grabberRotateUpButton = 11;
 
 
 }

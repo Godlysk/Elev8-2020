@@ -10,6 +10,7 @@ package frc.robot.Subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class DriveSubsystem extends SubsystemBase {
   
@@ -21,9 +22,6 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Creates a new DriveSubsystem.
    */
-
-  // public Encoder encArmVertical;
-
   public DriveSubsystem() {
     FR = new WPI_TalonSRX(Constants.FR_port);
     BR = new WPI_TalonSRX(Constants.BR_port);
@@ -34,12 +32,6 @@ public class DriveSubsystem extends SubsystemBase {
     FR.setInverted(true);
     BR.setInverted(true);
   }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
-
 
   public void drive(double leftSpeed, double rightSpeed) {
     FR.set(rightSpeed);
@@ -74,6 +66,28 @@ public class DriveSubsystem extends SubsystemBase {
     drive(left*Constants.maxSpeed, right*Constants.maxSpeed);
     
   }
+
+  double integral_DriveStraight =0;
+  public void PID_Straight(double yaxis, double zaxis) {
+    // double navxYawAxisRate = RobotContainer.navx.getRate();
+    // double shaftLeftRate = RobotContainer.enc_L.getRate();
+    // double shaftRightRate = RobotContainer.enc_R.getRate();
+
+    // double error = shaftLeftRate - shaftRightRate;
+    // integral_DriveStraight += error;
+    // double derivative = navxYawAxisRate; 
+
+    // double correction = (error * RobotConstants.kP_DriveStraight);
+    // correction += (integral_DriveStraight * RobotConstants.kI_DriveStraight);
+    // correction += (derivative * RobotConstants.kD_DriveStraight);
+
+    // double left = yaxis - correction;
+    // double right = yaxis + correction;
+
+    // drive(left*Constants.maxSpeed, right*Constants.maxSpeed);
+  }
+  
+
 
 
 

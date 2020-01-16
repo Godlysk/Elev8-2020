@@ -22,16 +22,16 @@ public class ArmSolenoidSubsystem extends SubsystemBase {
   public ArmSolenoidSubsystem() {
     ds = new DoubleSolenoid(1, 2);
   }
-  public void periodic() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+  // public void periodic() {
+  //   // Set the default command for a subsystem here.
+  //   // setDefaultCommand(new MySpecialCommand());
+  // }
 
-  public void open(){
-    ds.set(Value.kReverse);
-  }
+  // public void open(){
+  //   ds.set(Value.kReverse);
+  // }
 
-  public void close(){
-    ds.set(Value.kForward);
-  }
+  // public void close(){
+  //   ds.set(Value.kForward);
+  // }
 }
